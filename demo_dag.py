@@ -15,7 +15,7 @@ default_args = {
     'owner': 'airflow',
     'start_date': datetime(2019, 10, 14, 9, 58, 00),
     'concurrency': 1,
-    'catchup':False,
+    'catchup':True,
     'retries': 0,
     'tenant_id':'tename_id',
     'tenant_name':'tenant_name',
