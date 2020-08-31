@@ -71,7 +71,7 @@ def task_10(**context):
 This DAG represents Customer OnBoarding process flow.
 '''
 with DAG(DAG_NAME,
-         catchup=False,
+         catchup=True,
          default_args=default_args,
          schedule_interval=None,
          ) as demo_workflow:
