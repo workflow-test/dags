@@ -39,7 +39,13 @@ with DAG(DAG_NAME,
          default_args=default_args,
          schedule_interval=None,
          ) as demo_workflow:
-    step1 = PythonOperator(task_id='task_1', python_callable=task_1,provide_context=True)
-    step2 = PythonOperator(task_id='task_2', python_callable=task_2, provide_context=True)
+    step1 = PythonOperator(task_id='task_1', python_callable=task_1,executor_config={
+            "KubernetesExecutor": {"request_cpu": "100m",
+                                   "request_memory": "256Mi",
+                                   "limit_memory": "256Mi"}}, provide_context=True)
+    step2 = PythonOperator(task_id='task_2', python_callable=task_2, executor_config={
+            "KubernetesExecutor": {"request_cpu": "100m",
+                                   "request_memory": "256Mi",
+                                   "limit_memory": "256Mi"}}, provide_context=True)
   
 step1 >> step2
